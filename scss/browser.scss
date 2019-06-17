@@ -1,0 +1,25 @@
+.browser {
+    &__toolbar {
+        background: #B4B4B4;
+        height: 1.25rem;
+        border-radius: .5em .5em 0 0;
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+    }
+    &__toolbar-button {
+        height: .5rem;
+        width: .5rem;
+        background: white;
+        border-radius: 50%;
+        margin-right: .4em;
+        flex-shrink: 0;
+    }
+    margin-bottom: $block-spacing-small - $gutter-small;
+    @include medium {
+        margin-bottom: $block-spacing-medium - $gutter-medium;
+    }
+    @include large {
+        margin-bottom: $block-spacing-large - $gutter-large;
+    }
+}

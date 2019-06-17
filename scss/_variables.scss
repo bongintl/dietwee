@@ -1,0 +1,38 @@
+$columns: 12;
+$gutter-small: 1rem;
+$gutter-medium: 2rem;
+$gutter-large: 2rem;
+
+$rem-small: 17px;
+$rem-medium: 23px;
+$rem-large: 26px;
+
+$line-length: 32rem;
+
+$header-logo-height: 2rem;
+$header-padding: 2rem;
+$header-height: $header-logo-height + $header-padding * 2;
+
+$h1-size-xsmall: 2.5rem;
+$h1-size-small: 3rem;
+$h1-size-medium: 4rem;
+$h1-size-large: 5rem;
+
+$intro-last-line-clip: .6;
+$intro-last-line-small: $h1-size-small * $intro-last-line-clip;
+$intro-last-line-medium: $h1-size-medium * $intro-last-line-clip;
+$intro-last-line-large: $h1-size-medium * $intro-last-line-clip;
+
+$intro-bottom-small: $header-height + $intro-last-line-small;
+$intro-bottom-medium: $header-height + $intro-last-line-medium;
+$intro-bottom-large: $header-height + $intro-last-line-large;
+
+$padding-small: 1rem;
+$padding-medium: 2rem;
+$padding-large: 3rem;
+
+$block-spacing-small: 1.5rem;
+$block-spacing-medium: 3rem;
+$block-spacing-large: 4rem;
+
+$shadow: 0 2px 4px rgba( 0, 0, 0, .03 );

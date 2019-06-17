@@ -1,0 +1,22 @@
+<div class="team-thumbnail s-col-12 m-col-6 l-col-4">
+    <a href="{{ teamEntry.url }}">
+        <div class="team-thumbnail__image">
+        {% if teamEntry.portrait | length %}
+        {% set asset = teamEntry.portrait.first %}
+            {% switch asset.kind %}
+                {% case 'image' %}
+                    <img src="{{ asset.url }}" srcset="{{ asset.url('small') }} 800w, {{ asset.url('medium') }} 1200w, {{ asset.url('large') }} 1600w, {{ asset.url('xlarge') }} 2000w" sizes="">
+                {% case 'video' %}
+                     <video class="{{ class | default('') }}" muted autoplay loop playsinline src="{{ asset.url }}" type="{{ asset.mimeType }}"></video>
+                {% default %}
+                    Unknown asset type: {{ asset.kind }}
+            {% endswitch %}
+        {% endif %}
+        </div>
+        <div class="team-thumbnail__text">
+            <strong>{{ teamEntry.title }}</strong><br>
+            {{ teamEntry.role }}<br>
+            {{ teamEntry.email }}
+        </div>
+    </a>
+</div>

@@ -1,0 +1,46 @@
+{% embed '_layout' %}
+    {% block content %}
+        <div class="row heading">
+            <div class="s-col-12">
+                <h2>News</h2>
+            </div>
+        </div>
+        <div class="row">
+        	{% for entry in craft.entries.section('news').find() %}
+        		<div class="news s-col-12 m-col-4">
+        		    {% set thumbnailContent %}
+            		    <div class="news__thumbnail">
+            		        {% if entry.mainImage | length %}
+                                {% include 'partials/asset' with {
+                                    asset: entry.mainImage.first,
+                                    fit: 'crop',
+                                    class: 'news__asset',
+                                    sizes: {
+                                        small: '100vw',
+                                        medium: '33vw'
+                                    }
+                                } %}
+                            {% endif %}
+            		    </div>
+                        <div class="news__text">
+                            <h4>{{ entry.title }}</h4>
+            			    {{ entry.newsIntroduction }}
+            			    {% if entry.blocks | length %}
+            			        <p>
+            			            <a href="{{ entry.url }}">read more</a>
+                                </p>
+                            {% endif %}
+                        </div>
+        		    {% endset %}
+        		    {% if entry.blocks | length %}
+        		        <a href="{{ entry.url }}">
+        		            {{ thumbnailContent }}
+        		        </a>
+        		    {% else %}
+        		        {{ thumbnailContent }}
+        		    {% endif %}
+        		</div> 
+        	{% endfor %}
+    	</div>
+    {% endblock %}
+{% endembed %}

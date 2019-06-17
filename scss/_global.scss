@@ -1,0 +1,30 @@
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+* {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    list-style: none;
+}
+
+html {
+    transition: opacity .25s;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &.hidden {
+        opacity: 0;
+    }
+}
+
+img, video {
+    width: 100%;
+    display: block;
+}

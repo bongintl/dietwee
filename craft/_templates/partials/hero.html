@@ -1,0 +1,6 @@
+<div class="hero" data-header-classes="header--text-white">
+    {% if asset %}
+        {% include 'partials/asset' with { asset: asset, class: 'hero__image', fit: 'crop' } %}
+    {% endif %}
+    <h1 class="hero__title">{{ title }}</h1>
+</div>

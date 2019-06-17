@@ -1,0 +1,36 @@
+.intro {
+    transition: height .5s;
+    cursor: s-resize;
+    width: 100%;
+    z-index: 50;
+    overflow: hidden;
+    transition: height .75s, top .75s;
+    @include sticky;
+    background: white;
+    z-index: 10;
+    padding: 0 $padding-small;
+    @include medium {
+        padding: 0 $padding-medium;
+    }
+    @include large {
+        padding: 0 $padding-large;
+    }
+    &--expanded {
+        cursor: n-resize;
+    }
+    &__text {
+        max-width: $line-length;
+        // top: -.05em;
+        margin-bottom: -( $h1-size-small * ( 1 - $intro-last-line-clip ) );
+        @include medium {
+            margin-bottom: -( $h1-size-medium * ( 1 - $intro-last-line-clip ) );
+        }
+        @include large {
+            margin-bottom: -( 1em * ( 1 - $intro-last-line-clip ) );
+            max-width: 5em;
+        }
+    }
+    &__end {
+        display: block;
+    }
+}

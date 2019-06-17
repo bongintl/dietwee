@@ -1,0 +1,7 @@
+<div class="row block">
+    <div class="s-col-12">
+        {% if block.video | length %}
+            <video src="{{ block.video.first.url }}" controls {% if block.poster | length %} poster="{{ block.poster.first.url('xlarge') }}" {% endif %}></video>
+        {% endif %}
+    </div>
+</div>

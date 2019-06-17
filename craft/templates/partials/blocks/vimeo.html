@@ -1,0 +1,13 @@
+{% set auto = '' %}
+
+{% if block.autoplay %}
+    {% set auto = '?autoplay=1&loop=1&autopause=0&muted=1' %}
+{% endif %}
+
+<div class="row block">
+    <div class="s-col-12 vimeo">
+        <div class="vimeo__inner">
+            <iframe src="https://player.vimeo.com/video/{{ block.vimeoUrl | vimeo_id }}{{ auto }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    </div>
+</div>

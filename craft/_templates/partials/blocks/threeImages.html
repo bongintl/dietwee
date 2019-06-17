@@ -1,0 +1,24 @@
+<div class="row block three-images">
+    <div class="s-col-12 m-col-7">
+        {% if block.assets[ 0 ] %}
+            {% include 'partials/asset' with {
+                class: 'three-images__image three-images__image--first',
+                asset: block.assets[ 0 ]
+            } %}
+        {% endif %}
+        {% if block.assets[ 1 ] %}
+            {% include 'partials/asset' with {
+                class: 'three-images__image three-images__image--second',
+                asset: block.assets[ 1 ]
+            } %}
+        {% endif %}
+    </div>
+    <div class="s-col-12 m-col-5">
+        {% if block.assets[ 2 ] %}
+            {% include 'partials/asset' with {
+                class: 'three-images__image three-images__image--third',
+                asset: block.assets[ 2 ]
+            } %}
+        {% endif %}
+    </div>
+</div>

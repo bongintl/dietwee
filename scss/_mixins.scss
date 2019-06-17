@@ -1,0 +1,94 @@
+@mixin xsmall {
+    @media ( max-width: 568px ) { @content }
+}
+
+@mixin medium {
+    @media ( min-width: 768px ) { @content }
+}
+
+@mixin large {
+    @media ( min-width: 1200px ) { @content }
+}
+
+@mixin supports-sticky {
+    @supports ( position: sticky ) or
+              ( position: -webkit-sticky ) or
+              ( position: -moz-sticky ) or
+              ( position: -ms-sticky ) {
+        @content;
+    }
+}
+
+
+
+@mixin sticky {
+    @include supports-sticky {
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: sticky;
+        @content;
+    }
+}
+
+@mixin pad ( $prop, $multiply: 1, $add: 0 ) {
+    #{ $prop }: $padding-small * $multiply + $add;
+    @include medium {
+        #{ $prop }: $padding-medium * $multiply + $add;
+    }
+    @include large {
+        #{ $prop }: $padding-large * $multiply + $add;
+    }
+}
+
+@mixin pad-left ( $x: 1, $a: 0 ) {
+    @include pad( 'padding-left', $x, $a );
+}
+
+@mixin pad-right ( $x: 1, $a: 0 ) {
+    @include pad( 'padding-right', $x, $a );
+}
+
+@mixin pad-top ( $x: 1, $a: 0 ) {
+    @include pad( 'padding-top', $x, $a );
+}
+
+@mixin pad-bottom ( $x: 1, $a: 0 ) {
+    @include pad( 'padding-bottom', $x, $a );
+}
+
+@mixin pad-x ( $x: 1, $a: 0 ) {
+    @include pad-left( $x, $a );
+    @include pad-right( $x, $a );
+}
+
+@mixin pad-y ( $x: 1, $a: 0 ) {
+    @include pad-top( $x, $a );
+    @include pad-bottom( $x, $a );
+}
+
+@mixin margin-left ( $x: 1, $a: 0 ) {
+    @include pad( 'margin-left', $x, $a );
+}
+
+@mixin margin-right ( $x: 1, $a: 0 ) {
+    @include pad( 'margin-right', $x, $a );
+}
+
+@mixin margin-top ( $x: 1, $a: 0 ) {
+    @include pad( 'margin-top', $x, $a );
+}
+
+@mixin margin-bottom ( $x: 1, $a: 0 ) {
+    @include pad( 'margin-bottom', $x, $a );
+}
+
+@mixin margin-x ( $x: 1, $a: 0 ) {
+    @include margin-left( $x, $a );
+    @include margin-right( $x, $a );
+}
+
+@mixin margin-y ( $x: 1, $a: 0 ) {
+    @include margin-top( $x, $a );
+    @include margin-bottom( $x, $a );
+}

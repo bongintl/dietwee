@@ -1,0 +1,8 @@
+{% if block.fitToScreen == 'no' %}
+    {% include 'partials/asset' with { asset: asset } %}
+{% else %}
+    {% include 'partials/asset' with {
+        asset: asset,
+        fit: block.fitToScreen
+    } %}
+{% endif %}

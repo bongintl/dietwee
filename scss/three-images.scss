@@ -1,0 +1,42 @@
+.three-images {
+    margin-bottom: $block-spacing-small - $gutter-small;
+    @include medium {
+        // margin-bottom: $block-spacing-medium - $gutter-medium;
+        margin-bottom: $block-spacing-medium;
+    }
+    @include large {
+        // margin-bottom: $block-spacing-large - $gutter-large;
+        margin-bottom: $block-spacing-large;
+    }
+    &__image {
+        margin-bottom: $gutter-small;
+        @include medium {
+            margin-bottom: $gutter-medium;
+        }
+        @include large {
+            margin-bottom: $gutter-large;
+        }
+        &--second {
+            margin-left: auto;
+            @mixin five-sevenths ( $gutter ) {
+                width: calc( ( ( ( 100% + #{ $gutter } ) / 7 ) * 5 ) - #{ $gutter } );
+            }
+            // @include five-sevenths( $gutter-small );
+            @include medium {
+                @include five-sevenths( $gutter-medium );
+            }
+            @include medium {
+                @include five-sevenths( $gutter-large );
+            }
+        }
+        &--third {
+            margin-top: $gutter-small;
+            @include medium {
+                margin-top: $gutter-medium;
+            }
+            @include large {
+                margin-top: $gutter-large;
+            }
+        }
+    }
+}

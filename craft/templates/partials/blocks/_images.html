@@ -1,0 +1,7 @@
+<div class="row images">
+    {% for asset in block.images %}
+        <div class="s-col-12 {{ block.images | length > 1 ? 'm-col-6' }} images__image images__image--fit-{{ block.fitToScreen }}">
+            {% include 'partials/blocks/image' %}
+        </div>
+    {% endfor %}
+</div>

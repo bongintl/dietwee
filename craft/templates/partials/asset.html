@@ -1,0 +1,8 @@
+{% switch asset.kind %}
+    {% case 'image' %}
+        {{ img( asset, { sizes: sizes | default({}), class: class | default('') } ) }}
+    {% case 'video' %}
+         <video class="{{ class | default('') }}" muted autoplay loop playsinline src="{{ asset.url }}" type="{{ asset.mimeType }}"></video>
+    {% default %}
+        Unknown asset type: {{ asset.kind }}
+{% endswitch %}

@@ -1,0 +1,27 @@
+{% set isFit = fit is defined and fit != 'no' %}
+{% set fitClass = isFit ? 'asset--fit-' ~ fit : '' %}
+
+{% switch asset.kind %}
+    
+    {% case 'image' %}
+        {% if isFit %}
+            <div class="asset {{ fitClass }} {{ class | default('') }}" style="background-image: url({{ asset.url }})">
+                {% if video is defined and video %}
+                    <video class="asset__video" muted autoplay loop playsinline src="{{ video.url }}" type="{{ asset.mimeType }}"></video>
+                {% endif %}
+            </div>
+        {% else %}
+            {% set srcset = [] %}
+            {% for size in ['small', 'medium', 'large', 'xlarge'] %}
+                {% set srcset = srcset | merge([ asset.url( size ) ~ ' ' ~ asset.width( size ) ~ 'w' ]) %}
+            {% endfor %}
+            <img class="asset {{ class | default('')  }}" src="{{ asset.url('xlarge') }}" srcset="{{ srcset | join(', ') }}" sizes="100vw">
+        {% endif %}
+        
+    {% case 'video' %}
+        <video class="asset {{ fitClass }} {{ class | default('') }}" muted autoplay loop playsinline src="{{ asset.url('xlarge') }}" type="{{ asset.mimeType }}"></video>
+    
+    {% default %}
+        Unknown asset type: {{ asset.kind }}
+    
+{% endswitch %}

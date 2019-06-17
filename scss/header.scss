@@ -1,0 +1,135 @@
+.header {
+    $transition-duration: .25s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $header-padding $padding-small;
+    @include medium {
+        padding: $header-padding $padding-medium;
+    }
+    @include large {
+        padding: $header-padding $padding-large;
+    }
+    &__logo {
+        height: $header-logo-height;
+        svg {
+            height: 100%;
+            width: auto;
+        }
+    }
+    &__logo-graphic,
+    &__logo-text {
+        transition: fill $transition-duration, opacity $transition-duration;
+    }
+    &__logo-text {
+        opacity: 0;
+        @include medium {
+            opacity: 1;
+        }
+    }
+    &--bg-white {
+        background: white;
+    }
+    &--text-white {
+        .header__logo-graphic,
+        .header__logo-text {
+            fill: white;
+        }
+    }
+    &--menu-open {
+        .header__logo-graphic,
+        .header__logo-text {
+            fill: black !important;
+            opacity: 1 !important;
+        }
+    }
+    &--compact {
+        .header__logo-graphic {
+            opacity: 0;
+            fill: white;
+            @include medium {
+                fill: black;
+                opacity: 1;
+            }
+        }
+        .header__logo-text {
+            opacity: 0;
+            fill: white;
+        }
+    }
+    &__toggle {
+        $size: 1rem;
+        height: $size;
+        width: $size;
+        cursor: pointer;
+        span, &:before, &:after {
+            height: 2px;
+            width: 100%;
+            position: absolute;
+            margin-top: -1px;
+            display: block;
+            top: 50%;
+            transition:
+                transform $transition-duration,
+                opacity $transition-duration,
+                background $transition-duration;
+            transform-origin: 50% 50%;
+            background: black;
+            .header--text-white & {
+                background: white;
+            }
+            .header--menu-open & {
+                background: black !important;
+            }
+        }
+        &:before, &:after {
+            content: '';
+        }
+        &:before {
+            transform: translateY( calc( #{ -$size / 2 } + 1px ) );
+        }
+        &:after {
+            transform: translateY( calc( #{ $size / 2 } - 1px ) );
+        }
+        .header--menu-open & {
+            span:nth-child( 1 ) {
+                transform: rotate( 45deg );
+            }
+            span:nth-child( 2 ) {
+                transform: rotate( -45deg );
+            }
+            &:before {
+                opacity: 0;
+            }
+            &:after {
+                opacity: 0;
+            }
+        }
+    }
+    &__menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        height: 0;
+        overflow-y: scroll;
+        transition: height $transition-duration;
+        @include pad-x;
+        li:first-child {
+            padding-top: $header-height;
+        }
+        &
+        li:last-child {
+            padding-bottom: 3rem;
+        }
+        .header--menu-open & {
+            height: 100vh;
+        }
+    }
+}

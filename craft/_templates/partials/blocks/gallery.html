@@ -1,0 +1,7 @@
+<div class="gallery" style="background-color: {{ block.background }}">
+    {% for asset in block.images %}
+        <div class="gallery__image s-col-10 m-col-7">
+            {% include 'partials/asset' with { asset: asset } %}
+        </div>
+    {% endfor %}
+</div>

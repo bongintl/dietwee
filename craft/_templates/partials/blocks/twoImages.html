@@ -1,0 +1,8 @@
+<div class="row images">
+    {% set sizes = block.split | split('/') %}
+    {% for asset in block.images %}
+        <div class="s-col-12 m-col-{{ sizes[ loop.index - 1 ] }} images__image images__image--fit-{{ block.fitToScreen }}">
+            {% include 'partials/blocks/image' %}
+        </div>
+    {% endfor %}
+</div>

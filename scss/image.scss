@@ -1,0 +1,26 @@
+.image {
+    margin-bottom: $block-spacing-small;
+    @include medium {
+        margin-bottom: $block-spacing-medium;
+    }
+    @include large {
+        margin-bottom: $block-spacing-large;
+    }
+    &__image {
+        &--full-width {
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50vw);
+        }
+        &--limit-height {
+            object-fit: contain;
+            max-height: calc( 100vh - #{ $padding-small * 2 } );
+            @include medium {
+                max-height: calc( 100vh - #{ $padding-medium * 2 } );
+            }
+            @include large {
+                max-height: calc( 100vh - #{ $padding-large * 2 } );
+            }
+        }
+    }
+}

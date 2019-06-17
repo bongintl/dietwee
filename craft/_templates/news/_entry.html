@@ -1,0 +1,13 @@
+{% embed '_layout' with {
+    metaDescription: entry.newsIntroduction | striptags,
+    metaImage: entry.heroImage | length ? entry.heroImage.first.url : null
+} %}
+    {% block content %}
+        <div class="row heading">
+            <div class="s-col-12">
+                <p><a href="/news">Back to news</a></p>
+            </div>
+        </div>
+        {% include 'partials/blocks' with { blocks: entry.blocks } %}
+    {% endblock %}
+{% endembed %}

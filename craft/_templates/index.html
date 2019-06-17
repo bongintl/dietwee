@@ -1,0 +1,51 @@
+{% macro firstWords( text ) %}
+    {{ text | split(' ') | slice( 0, -1 ) | join(' ') }}
+{% endmacro %}
+{% macro lastWord( text ) %}
+    {{ text | split(' ') | last }}
+{% endmacro %}
+{% import _self as macros %}
+{% embed '_layout' with { 
+    heroImage: entry.mainImage | length ? entry.mainImage.first : null,
+    heroVideo: entry.mainVideo | length ? entry.mainVideo.first : null,
+    heroText: entry.title,
+    pageClass: 'page--home'
+} %}
+    {% block content %}
+        <div class="intro" data-header-classes="header--bg-white">
+            <h1 class="intro__text">
+                {{ macros.firstWords( entry.introduction ) }}
+                <span class="intro__end">{{ macros.lastWord( entry.introduction ) }}</span>
+                <span class="intro__expanded">
+                    {{ macros.firstWords( entry.expandedIntroduction ) }}
+                    <span class="intro__end">{{ macros.lastWord( entry.expandedIntroduction ) }}</span>
+                </span>
+            </h1>
+        </div>
+        <div class="projects" data-header-classes="header--bg-white">
+            {% set projects = craft.entries.section('projects') %}
+            <div class="projects__images">
+                {% for project in projects %}
+                    {% if project.mainImage | length %}
+                        {% include 'partials/asset' with {
+                            asset: project.mainImage.first,
+                            class: 'projects__image',
+                            fit: 'crop',
+                            video: project.mainVideo | length ? project.mainVideo.first : null
+                        } %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="projects__captions">
+                {% for project in projects %}
+                    <a class="projects__caption-container" href="{{ project.url }}">
+                        <div class="projects__caption">
+                            <h1>{{ project.homepageCaption }}</h1>
+                            <h3>{{ project.title }}</h3>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,11 @@
+.team {
+    &__image {
+        margin-bottom: $padding-small;
+        @include medium {
+            margin-bottom: $padding-medium;
+        }
+        @include large {
+            margin-bottom: $padding-large;
+        }
+    }
+}

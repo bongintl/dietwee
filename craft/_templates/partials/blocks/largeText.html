@@ -1,0 +1,5 @@
+<div class="block row">
+    <div class="text s-col-11 m-col-8 m-off-2">
+        {{ block.body | replace({ '<p>': '<h5>', '</p>': '</h5>' }) | raw }}
+    </div>
+</div>

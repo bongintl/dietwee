@@ -1,0 +1,7 @@
+<ul class="header__menu">
+    
+    {% for link in menu.menu %}
+        <li><a href="{{ link.linkUrl }}" {% if link.targetBlank %}target="_blank"{% endif %}><h1>{{ link.linkTitle }}</h1></a></li>
+    {% endfor %}
+    
+</ul>

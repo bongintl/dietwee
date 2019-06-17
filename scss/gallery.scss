@@ -1,0 +1,91 @@
+.gallery {
+    &__images {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        margin-bottom: $block-spacing-small;
+        padding-left: $padding-small;
+        padding-right: $padding-small;
+        padding-top: $gutter-small;
+        padding-bottom: $gutter-small * 2 + 1rem;
+        @include medium {
+            margin-bottom: $block-spacing-medium;
+            padding-left: $padding-medium;
+            padding-right: $padding-medium;
+            padding-top: $gutter-medium;
+            padding-bottom: $gutter-medium * 2 + 1rem;
+        }
+        @include large {
+            margin-bottom: $block-spacing-large;
+            padding-left: $padding-large;
+            padding-right: $padding-large;
+            padding-top: $gutter-large;
+            padding-bottom: $gutter-large * 2 + 1rem;
+        }
+        &:after {
+            content: '';
+            width: 1px;
+            height: 1px;
+            flex: 0 0 auto;
+        }
+    }
+    &__image {
+        // height: auto;
+        flex: 0 0 auto;
+        object-fit: contain;
+        object-position: top left;
+        width: auto;
+        max-width: calc( 100vw - #{ $padding-small * 2 } );
+        max-height: calc( 100vh - #{ $gutter-small * 3 + 1rem } );
+        @include medium {
+            max-width: calc( 100vw - #{ $padding-medium * 2 } );
+            max-height: calc( 100vh - #{ $gutter-medium * 3 + 1rem } );
+        }
+        @include large {
+            max-width: calc( 100vw - #{ $padding-large * 2 } );
+            max-height: calc( 100vh - #{ $gutter-large * 3 + 1rem } );
+        }
+        margin-right: $padding-small;
+        @include medium {
+            margin-right: $padding-medium;
+        }
+        @include large {
+            margin-right: $padding-large;
+        }
+        &:last-child {
+            min-width: calc( 100vw - #{ $padding-small * 2 } );
+            @include medium {
+                min-width: calc( 100vw - #{ $padding-medium * 2 } );
+            }
+            @include large {
+                min-width: calc( 100vw - #{ $padding-large * 2 } );
+            }
+        }
+    }
+    &__arrows {
+        position: absolute;
+        right: $padding-small;
+        bottom: $gutter-small;
+        line-height: 1;
+        display: flex;
+        @include medium {
+            right: $padding-medium;
+            bottom: $gutter-medium;
+        }
+        @include large {
+            right: $padding-large;
+            bottom: $gutter-large;
+        }
+    }
+    &__arrow {
+        cursor: pointer;
+        margin-left: 1rem;
+        &--disabled {
+            pointer-events: none;
+            opacity: .5;
+        }
+    }
+}

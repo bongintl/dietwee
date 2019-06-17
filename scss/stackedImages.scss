@@ -1,0 +1,29 @@
+.stacked-images {
+    margin-bottom: $block-spacing-small;
+    align-items: center;
+    @include medium {
+        margin-bottom: $block-spacing-medium;
+    }
+    @include large {
+        margin-bottom: $block-spacing-large;
+    }
+    &__image {
+        margin-bottom: 2em;
+        &--limit-height {
+            object-fit: contain;
+            max-height: calc( 100vh - #{ $padding-small * 2 } );
+            @include medium {
+                max-height: calc( 100vh - #{ $padding-medium * 2 } );
+                &:nth-child( odd ) {
+                    object-position: center right;
+                }
+                &:nth-child( even ) {
+                    object-position: center left;
+                }
+            }
+            @include large {
+                max-height: calc( 100vh - #{ $padding-large * 2 } );
+            }
+        }
+    }
+}

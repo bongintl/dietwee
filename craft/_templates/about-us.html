@@ -1,0 +1,10 @@
+{% embed '_layout' with {
+    heroImage: entry.mainImage | length ? entry.mainImage.first : null,
+    heroVideo: entry.mainVideo | length ? entry.mainVideo.first : null,
+    heroText: entry.mainText
+} %}
+    {% block content %}
+        {% include 'partials/blocks' with { blocks: entry.blocks } %} 
+        {% include 'partials/team' %}
+    {% endblock %}
+{% endembed %}

@@ -1,0 +1,27 @@
+.page {
+    background: white;
+    min-height: 100vh;
+    padding-top: $header-height + $padding-small;
+    padding-bottom: $block-spacing-small;
+    @include medium {
+        padding-top: $header-height + $padding-medium;
+        padding-bottom: $block-spacing-medium;
+    }
+    @include large {
+        padding-top: $header-height + $padding-large;
+        padding-bottom: $block-spacing-large;
+    }
+    &--has-hero {
+        padding-top: $block-spacing-small;
+        @include medium {
+            padding-top: $block-spacing-medium;
+        }
+        @include large {
+            padding-top: $block-spacing-large;
+        }
+    }
+    &--home {
+        padding-top: $header-height;
+        padding-bottom: 0;
+    }
+}

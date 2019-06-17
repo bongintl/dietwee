@@ -1,0 +1,35 @@
+.news {
+    margin-bottom: $padding-small;
+    @include medium {
+        margin-bottom: $padding-medium;
+    }
+    @include large {
+        margin-bottom: $padding-large;
+    }
+    &__thumbnail {
+        background: #D8D8D8;
+        overflow: hidden;
+        height: 0;
+        padding-bottom: 100%;
+        margin-bottom: 1em;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__asset {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    &__text {
+        font-size: 20px;
+        p {
+            margin-bottom: 0;
+            display: inline;
+        }
+    }
+}

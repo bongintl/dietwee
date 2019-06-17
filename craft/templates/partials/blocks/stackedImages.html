@@ -1,0 +1,10 @@
+<div class="row block stacked-images">
+    {% for asset in block.assets %}
+        {% include 'partials/asset' with {
+            asset: asset,
+            class: 's-col-12 m-col-6 ' ~ bem( 'stacked-images__image', {
+                'limit-height': block.limitHeight
+            })
+        } %}
+    {% endfor %}
+</div>

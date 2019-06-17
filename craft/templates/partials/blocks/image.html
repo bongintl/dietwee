@@ -1,0 +1,16 @@
+<div class="row image">
+    {% set width = block.width == 'full' ? 12 : block.width.value %}
+    {% set offset = ( 12 - width ) / 2 %}
+    {% for asset in block.image %}
+        <div class="s-col-12 m-col-{{ width }} m-off-{{ offset }}">
+            {% include 'partials/asset' with {
+                asset: asset,
+                class: bem( 'images__image', {
+                    'full-width': block.width == 'full',
+                    'limit-height': block.limitHeight
+                }),
+                sizes: { 'medium': ( width / 12 * 100 ) ~ 'vw' }
+            } %}
+        </div>
+    {% endfor %}
+</div>

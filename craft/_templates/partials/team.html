@@ -1,0 +1,24 @@
+<div class="block row">
+    {% for teamEntry in craft.entries.section('team') %}
+        {% if teamEntry.id != entry.id %}
+            <div class="team s-col-12 m-col-4">
+                <a href="{{ teamEntry.url }}">
+                    <div class="team__thumbnail">
+                        {% if teamEntry.portrait | length %}
+                            {% include 'partials/asset' with {
+                                asset: teamEntry.portrait.first,
+                                class: 'team__asset',
+                                fit: 'crop'
+                            } %}
+                        {% endif %}
+                    </div>
+                    <div class="team__text">
+                        <strong>{{ teamEntry.title }}</strong><br>
+                        {{ teamEntry.role }}<br>
+                        {{ teamEntry.email }}
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

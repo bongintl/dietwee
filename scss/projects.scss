@@ -1,0 +1,67 @@
+.projects {
+    @mixin block-height {
+        height: calc( 100vh - #{ $intro-bottom-small });
+        @include medium {
+            height: calc( 100vh - #{ $intro-bottom-medium });
+        }
+        @include large {
+            height: calc( 100vh - #{ $intro-bottom-large });
+        }
+    }
+    &__image {
+        display: block;
+        overflow: hidden;
+        @include sticky;
+        img, video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        // @include block-height;
+        // object-fit: cover;
+        // position: sticky;
+        // top: $intro-bottom-small;
+        // @include medium {
+        //     top: $intro-bottom-medium;
+        // }
+        // @include large {
+        //     top: $intro-bottom-large;
+        // }
+    }
+    &__captions {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    &__caption-container {
+        display: block;
+        // @include block-height;
+    }
+    &__caption {
+        color: white;
+        max-width: $line-length;
+        padding: $padding-small;
+        @include sticky {
+            top: $intro-bottom-small;
+        }
+        @include medium {
+            padding: $padding-medium;
+            // top: $intro-bottom-medium;
+        }
+        @include large {
+            padding: $padding-large;
+            // top: $intro-bottom-large;
+        }
+        h3 {
+            margin: .5rem 0;
+            @include large {
+                margin: 1rem 0;
+            }
+        }
+    }
+}

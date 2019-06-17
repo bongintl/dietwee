@@ -1,0 +1,56 @@
+.two-images {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $block-spacing-small;
+    @include medium {
+        margin-bottom: $block-spacing-medium;
+    }
+    @include large {
+        margin-bottom: $block-spacing-large;
+    }
+    &__image {
+        width: auto;
+        padding-left: $gutter-small / 2;
+        padding-right: $gutter-small / 2;
+        @include medium {
+            padding-left: $gutter-medium / 2;
+            padding-right: $gutter-medium / 2;
+        }
+        @include large {
+            padding-left: $gutter-large / 2;
+            padding-right: $gutter-large / 2;
+        }
+        @for $i from 1 through $columns {
+            &--width-#{ $i } {
+                max-width: 100% / $columns * $i;
+            }
+        }
+        &--limit-height {
+            object-fit: contain;
+            max-height: calc( 100vh - #{ $padding-small * 2 } );
+            @include medium {
+                max-height: calc( 100vh - #{ $padding-medium * 2 } );
+            }
+            @include large {
+                max-height: calc( 100vh - #{ $padding-large * 2 } );
+            }
+            &.two-images__image--width-5 {
+                max-height: calc( ( 100vh - #{ $padding-small * 2 } ) * 5/7 );
+                @include medium {
+                    max-height: calc( ( 100vh - #{ $padding-medium * 2 } ) * 5/7 );
+                }
+                @include large {
+                    max-height: calc( ( 100vh - #{ $padding-large * 2 } ) * 5/7 );
+                }
+            }
+        }
+        @include medium {
+            &--left {
+                object-position: top right;
+            }
+            &--right {
+                object-position: top left;
+            }
+        }
+    }
+}

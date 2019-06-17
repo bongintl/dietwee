@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="browser s-col-12">
+        <div class="browser__toolbar">
+            <div class="browser__toolbar-button"></div>
+            <div class="browser__toolbar-button"></div>
+            <div class="browser__toolbar-button"></div>
+        </div>
+        {% if block.image | length %}
+            {% include 'partials/asset' with { asset: block.image.first } %}
+        {% endif %}
+    </div>
+</div>

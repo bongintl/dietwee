@@ -1,0 +1,9 @@
+.block {
+    margin-bottom: $block-spacing-small;
+    @include medium {
+        margin-bottom: $block-spacing-medium;
+    }
+    @include large {
+        margin-bottom: $block-spacing-large;
+    }
+}

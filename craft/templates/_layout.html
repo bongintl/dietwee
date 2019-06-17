@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="hidden">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ siteName }}{% if title is defined %} | {{ title }}{% endif %}</title>
+        <link rel="stylesheet" href="/style.css" type="text/css" />
+        
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="{{ siteName }}{% if title is defined %} | {{ title }}{% endif %}" />
+        <meta property="og:url" content="{{ craft.request.url }}" />
+        <meta property="og:description" content="{{ metaDescription | default( social.seoDescription ) }}" />
+        
+    	<meta name="twitter:card" content="summary">
+    	<meta name="twitter:title" content="{{ siteName }}{% if title is defined %} | {{ title }}{% endif %}">
+    	<meta name="twitter:url" content="{{ craft.request.url }}">
+    	<meta name="twitter:description" content="{{ metaDescription | default( social.seoDescription ) }}">
+    	
+    	{% if ( metaImage is defined and metaImage is not null ) or ( social.seoImage | length ) %}
+    	    <meta property="og:image" content="{{ metaImage | default( social.seoImage.first.url ) }}" />
+    	    <meta name="twitter:image" content="{{ metaImage | default( social.seoImage.first.url ) }}">
+    	{% endif %}
+    	
+    	{% if social.favicon16 | length %}<link rel="icon" href="{{ social.favicon16.first.url }}" sizes="16x16">{% endif %}
+        {% if social.favicon32 | length %}<link rel="icon" href="{{ social.favicon32.first.url }}" sizes="32x32">{% endif %}
+    	
+    </head>
+    <body>
+        {% set hasHero = heroImage is defined and heroImage is not null %}
+        <header class="header {{ headerClass | default( hasHero ? 'header--text-white' : '' ) }}">
+            {% include 'partials/menu.html' %}
+            <a class="header__logo" href="/">
+                {% include 'partials/logo.svg' %}
+            </a>
+            <div class="header__toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+        <main>
+            {% if hasHero %}
+                <div class="hero" data-header-classes="header--text-white">
+                    {{ img( heroImage, { class: 'hero__image' } ) }}
+                    {% if heroVideo %}
+                        <video class="hero__video must-autoplay" muted autoplay loop playsinline src="{{ heroVideo.url }}" type="{{ heroVideo.mimeType }}"></video>
+                    {% endif %}
+                    <h1 class="hero__title">{{ heroText }}</h1>
+                </div>
+            {% endif %}
+            <div class="page {{ pageClass | default('') }} {{ hasHero ? 'page--has-hero' }}" {% if hasHero %}data-header-classes="header--compact"{% endif %}>
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <script type="text/javascript" src="/bundle.js"></script>
+    </body>
+</html>

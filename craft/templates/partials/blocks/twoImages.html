@@ -1,0 +1,18 @@
+<div class="row two-images">
+    {% set widths = block.split | split('/') %}
+    {% for asset in block.images %}
+        {% set width = widths[ loop.index0 ] %}
+        <!--<div class="s-col-12 m-col-{{ width }}">-->
+            {% include 'partials/asset' with {
+                asset: asset,
+                class: bem( 'two-images__image', {
+                    'left': loop.index0 == 0,
+                    'right': loop.index0 == 1,
+                    'limit-height': block.limitHeight,
+                    ("width-" ~ width): true
+                }),
+                sizes: { 'medium': ( width / 12 * 100 ) ~ 'vw' }
+            } %}
+        <!--</div>-->
+    {% endfor %}
+</div>

@@ -1,0 +1,42 @@
+{% embed '_layout' with {
+    metaDescription: entry.body | striptags,
+    metaImage: entry.portrait | length ? entry.portrait.first.url : null
+} %}
+    {% block content %}
+        <div class="row heading">
+            <div class="s-col-12">
+                <p><a href="/about-us">Back to about us</a></p>
+            </div>
+        </div>
+        <div class="team row block">
+            <div class="team__image m-col-5">
+                {% if entry.portrait | length %}
+                    {% include 'partials/asset' with {
+                        asset: entry.portrait.first
+                    } %}
+                {% endif %}
+            </div>
+            <div class="m-col-7">
+                <h3>
+                    <strong>{{ entry.title }}</strong><br>
+                    {{ entry.role }}<br>
+                    {{ entry.email }}
+                </h3>
+                {{ entry.body}}
+            </div>
+        </div>
+        
+        
+        {% include 'partials/blocks' with { blocks: entry.blocks } %}
+
+        
+        
+        <div class="block row">
+        {% for teamEntry in craft.entries.section('team').order('lft asc') %}
+            {% if teamEntry.id != entry.id %}
+                {% include 'partials/team-thumbnails' %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endblock %}
+{% endembed %}

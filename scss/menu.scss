@@ -1,0 +1,29 @@
+.menu {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    height: 0;
+    overflow-y: scroll;
+    transition: height .5s;
+    padding: 0 $padding-small;
+    @include medium {
+        padding: 0 $padding-medium;
+    }
+    @include large {
+        padding: 0 $padding-large;
+    }
+    li:first-child {
+        padding-top: $header-height;
+    }
+    &
+    li:last-child {
+        padding-bottom: 3rem;
+    }
+    &--open {
+        height: 100vh;
+    }
+}

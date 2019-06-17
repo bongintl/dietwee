@@ -1,0 +1,67 @@
+.row {
+    // border: 1px dashed red;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: $gutter-small / 2;
+    padding-right: $gutter-small / 2;
+    @include medium {
+        padding-left: $padding-medium - $gutter-medium / 2;
+        padding-right: $padding-medium - $gutter-medium / 2;
+    }
+    @include large {
+        padding-left: $padding-large - $gutter-large / 2; 
+        padding-right: $padding-large - $gutter-large / 2;
+    }
+    &--no-wrap {
+        flex-wrap: nowrap;
+    }
+    &--first {
+        margin-top: $header-height;
+    }
+    &--center {
+        align-items: center;
+    }
+}
+
+[class*='col'] {
+    // border: 1px dashed cyan;
+    padding-left: $gutter-small / 2;
+    padding-right: $gutter-small / 2;
+    @include medium {
+        padding-left: $gutter-medium / 2;
+        padding-right: $gutter-medium / 2;
+    }
+    @include large {
+        padding-left: $gutter-large / 2;
+        padding-right: $gutter-large / 2;
+    }
+}
+
+@mixin column-widths ( $cls ) {
+    @for $i from 1 through $columns {
+        .#{ $cls }-#{ $i } {
+            width: 100% / $columns * $i;
+        }
+    }
+}
+
+@mixin column-offsets ( $cls ) {
+    @for $i from 0 through $columns - 1 {
+        .#{ $cls }-#{ $i } {
+            margin-left: 100% / $columns * $i;
+        }
+    }
+}
+
+@include column-widths( 's-col' );
+@include column-offsets( 's-off' );
+
+@include medium {
+    @include column-widths( 'm-col' );
+    @include column-offsets( 'm-off' );
+}
+
+@include large {
+    @include column-widths( 'l-col' );
+    @include column-offsets( 'l-off' );
+}

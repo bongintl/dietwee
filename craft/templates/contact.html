@@ -1,0 +1,18 @@
+{% embed '_layout' %}
+    {% block content %}
+        <div class="row">
+            <div class="s-col-12 m-col-6">
+                {% for block in entry.leftColumn %}
+                    <h2>{{ block.heading }}</h2>
+                   {{ block.copy }} 
+                {% endfor %}
+            </div>
+            <div class="s-col-12 m-col-6">
+                {% for block in entry.rightColumn %}
+                    <h2>{{ block.heading }}</h2>
+                    {{ block.copy }} 
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+{% endembed %}

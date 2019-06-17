@@ -1,0 +1,7 @@
+<div class="row">
+    <div class="s-col-12">
+        {% if block.image | length %}
+            {% include 'partials/asset' with { asset: block.image.first, class: 'browser' } %}
+        {% endif %}
+    </div>
+</div>
