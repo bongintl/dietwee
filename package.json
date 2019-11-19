@@ -4,7 +4,6 @@
   "description": "",
   "main": "js/main.js",
   "scripts": {
-    "postinstall": "mkdir -p js && touch js/main.js && mkdir -p scss && touch scss/style.scss && npm run dev",
     "build-sass": "node-sass scss/style.scss style.css",
     "watch-sass": "npm run build-sass && onchange 'scss/*' -- npm run build-sass",
     "build-js": "browserify js/main.js -t [ babelify --presets [ env ] ] | uglifyjs -c -m > bundle.js",
